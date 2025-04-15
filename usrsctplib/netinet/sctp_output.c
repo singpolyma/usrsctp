@@ -4538,7 +4538,7 @@ sctp_lowlevel_chunk_output(struct sctp_inpcb *inp,
 #if defined(__APPLE__) && !defined(__Userspace__) && (!defined(APPLE_LEOPARD) && !defined(APPLE_SNOWLEOPARD) && !defined(APPLE_LION) && !defined(APPLE_MOUNTAINLION))
 			flowlabel = ntohl(inp->ip_inp.inp.inp_flow);
 #else
-			flowlabel = ntohl(((struct inpcb *)inp)->inp_flow);
+			flowlabel = ntohl(((struct inpcbu *)inp)->inp_flow);
 #endif
 		}
 		flowlabel &= 0x000fffff;
@@ -4615,7 +4615,7 @@ sctp_lowlevel_chunk_output(struct sctp_inpcb *inp,
 #if defined(__APPLE__) && !defined(__Userspace__) && (!defined(APPLE_LEOPARD) && !defined(APPLE_SNOWLEOPARD) && !defined(APPLE_LION) && !defined(APPLE_MOUNTAINLION))
 			tos_value = (ntohl(inp->ip_inp.inp.inp_flow) >> 20) & 0xff;
 #else
-			tos_value = (ntohl(((struct inpcb *)inp)->inp_flow) >> 20) & 0xff;
+			tos_value = (ntohl(((struct inpcbu *)inp)->inp_flow) >> 20) & 0xff;
 #endif
 		}
 		tos_value &= 0xfc;

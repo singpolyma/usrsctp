@@ -45,7 +45,7 @@ struct inpcbpolicy;
  * numbers, and pointers up (to a socket structure) and down (to a
  * protocol-specific control block) are stored here.
  */
-LIST_HEAD(inpcbhead, inpcb);
+LIST_HEAD(inpcbhead, inpcbu);
 LIST_HEAD(inpcbporthead, inpcbport);
 
 /*
@@ -103,9 +103,9 @@ struct in_conninfo {
 
 struct	icmp6_filter;
 
-struct inpcb {
-	LIST_ENTRY(inpcb) inp_hash;	/* hash list */
-	LIST_ENTRY(inpcb) inp_list;	/* list for all PCBs of this proto */
+struct inpcbu {
+	LIST_ENTRY(inpcbu) inp_hash;	/* hash list */
+	LIST_ENTRY(inpcbu) inp_list;	/* list for all PCBs of this proto */
 	void	*inp_ppcb;		/* pointer to per-protocol pcb */
 	struct	inpcbinfo *inp_pcbinfo;	/* PCB list info */
 	struct	socket *inp_socket;	/* back pointer to socket */
